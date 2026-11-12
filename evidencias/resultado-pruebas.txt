@@ -1,0 +1,16 @@
+SmartLibrary API - resultado de las pruebas automaticas (./mvnw test)
+Spring Boot 4.1.2 - Java 21 (compilado con JDK 25) - H2 en memoria
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.723 s -- in co.edu.ucc.smartlibrary.SmartlibraryApiApplicationTests
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.532 s -- in co.edu.ucc.smartlibrary.controller.PrestamoControllerTest
+
+Casos de prueba:
+  [OK] co.edu.ucc.smartlibrary.SmartlibraryApiApplicationTests.contextLoads (0.005 s)
+  [OK] co.edu.ucc.smartlibrary.controller.PrestamoControllerTest.registrarPrestamoLibroNoDisponible (1.244 s)
+  [OK] co.edu.ucc.smartlibrary.controller.PrestamoControllerTest.listarPrestamos (0.05 s)
+  [OK] co.edu.ucc.smartlibrary.controller.PrestamoControllerTest.registrarPrestamoSolicitudInvalida (0.019 s)
+  [OK] co.edu.ucc.smartlibrary.controller.PrestamoControllerTest.registrarPrestamoEstudianteInexistente (0.013 s)
+  [OK] co.edu.ucc.smartlibrary.controller.PrestamoControllerTest.registrarPrestamoLibroDisponible (0.178 s)
+  [OK] co.edu.ucc.smartlibrary.controller.PrestamoControllerTest.registrarPrestamoLibroInexistente (0.012 s)
+
+Total: 7 pruebas, 0 fallos, 0 errores.

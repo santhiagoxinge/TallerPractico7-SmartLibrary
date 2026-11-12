@@ -1,0 +1,46 @@
+SmartLibrary API - evidencias de pruebas HTTP (curl contra la aplicacion en ejecucion)
+Datos iniciales (data.sql): estudiantes 1 y 2; libros 1 y 2 disponibles; libro 3 con prestamo activo.
+
+### 1. Prestamo de libro disponible (esperado: 201 Created)
+$ curl -s -i -X POST http://localhost:8081/api/prestamos -H 'Content-Type: application/json' -d '{"estudianteId":1,"libroId":1}'
+HTTP/1.1 201 
+Location: /api/prestamos/2
+Content-Type: application/json
+
+{"estudiante":{"nombre":"Ana Gomez","correo":"ana.gomez@campusucc.edu.co","id":1},"libro":{"titulo":"Diseno de Software","disponible":false,"id":1},"fechaPrestamo":"2026-11-11","activo":true,"fechaDevolucion":null,"id":2}
+
+### 2. Libro ya prestado (esperado: 409 Conflict, sin nuevo prestamo)
+$ curl -s -i -X POST http://localhost:8081/api/prestamos -H 'Content-Type: application/json' -d '{"estudianteId":2,"libroId":1}'
+HTTP/1.1 409 
+Content-Type: application/problem+json
+
+{"detail":"El libro con id 1 no está disponible","instance":"/api/prestamos","status":409,"title":"Conflict"}
+
+### 3. Estudiante inexistente (esperado: 404 Not Found)
+$ curl -s -i -X POST http://localhost:8081/api/prestamos -H 'Content-Type: application/json' -d '{"estudianteId":99,"libroId":2}'
+HTTP/1.1 404 
+Content-Type: application/problem+json
+
+{"detail":"No existe el estudiante con id 99","instance":"/api/prestamos","status":404,"title":"Not Found"}
+
+### 4. Libro inexistente (esperado: 404 Not Found)
+$ curl -s -i -X POST http://localhost:8081/api/prestamos -H 'Content-Type: application/json' -d '{"estudianteId":1,"libroId":99}'
+HTTP/1.1 404 
+Content-Type: application/problem+json
+
+{"detail":"No existe el libro con id 99","instance":"/api/prestamos","status":404,"title":"Not Found"}
+
+### Extra. Solicitud invalida sin libroId (esperado: 400 Bad Request, R4)
+$ curl -s -i -X POST http://localhost:8081/api/prestamos -H 'Content-Type: application/json' -d '{"estudianteId":1}'
+HTTP/1.1 400 
+Content-Type: application/problem+json
+
+{"detail":"libroId es obligatorio","instance":"/api/prestamos","status":400,"title":"Bad Request"}
+
+### 5. Consulta de prestamos (esperado: 200 OK con registros; solo 2 prestamos: el inicial y el del escenario 1)
+$ curl -s -i http://localhost:8081/api/prestamos
+HTTP/1.1 200 
+Content-Type: application/json
+
+[{"estudiante":{"nombre":"Luis Martinez","correo":"luis.martinez@campusucc.edu.co","id":2},"libro":{"titulo":"UML Distilled","disponible":false,"id":3},"fechaPrestamo":"2026-11-11","activo":true,"fechaDevolucion":null,"id":1},{"estudiante":{"nombre":"Ana Gomez","correo":"ana.gomez@campusucc.edu.co","id":1},"libro":{"titulo":"Diseno de Software","disponible":false,"id":1},"fechaPrestamo":"2026-11-11","activo":true,"fechaDevolucion":null,"id":2}]
+

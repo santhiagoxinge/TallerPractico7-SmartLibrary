@@ -1,0 +1,17 @@
+# Compilación de Maven
+target/
+
+# Respaldos y bloqueos de Visual Paradigm
+*.vpp.bak*
+*.vpp.lck
+*.lck
+
+# Archivos temporales de Office
+~$*
+
+# IDE y sistema operativo
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
