@@ -11,6 +11,8 @@ Caso de uso implementado: **Registrar préstamo** (`POST /api/prestamos`) y **co
 | **Docente** | Miguel Tovar |
 | **Institución** | Universidad Cooperativa de Colombia · Campus Pasto, Nariño |
 
+📄 **Documento de entrega:** [ver en PDF](docs/Taller7_SmartLibrary_ParraErazo_926222.pdf) (se abre directamente en GitHub) · [descargar en Word](docs/Taller7_SmartLibrary_ParraErazo_926222.docx)
+
 ---
 
 ## Estructura del repositorio
@@ -19,7 +21,8 @@ Caso de uso implementado: **Registrar préstamo** (`POST /api/prestamos`) y **co
 TallerPractico7-SmartLibrary/
 ├── README.md
 ├── docs/
-│   └── Taller7_SmartLibrary_ParraErazo_926222.docx   ← documento de entrega
+│   ├── Taller7_SmartLibrary_ParraErazo_926222.pdf    ← documento de entrega (lectura en GitHub)
+│   └── Taller7_SmartLibrary_ParraErazo_926222.docx   ← documento de entrega (Word editable)
 ├── diagramas/
 │   ├── vpp/                                          ← proyectos de Visual Paradigm 18.1
 │   │   ├── 01-modelo-inicial-anotado.vpp
@@ -144,7 +147,7 @@ Evidencias: [`evidencias/resultado-pruebas.txt`](evidencias/resultado-pruebas.tx
 5. **Errores explícitos:** las excepciones del dominio se traducen a 404, 409 y 400 en un solo lugar (`ManejadorExcepciones`).
 6. **Repositorios como interfaces de Spring Data.** No se dibuja realización porque la implementación la genera el framework.
 
-La justificación completa está en [`docs/Taller7_SmartLibrary_ParraErazo_926222.docx`](docs/Taller7_SmartLibrary_ParraErazo_926222.docx).
+La justificación completa está en el documento de entrega: [PDF](docs/Taller7_SmartLibrary_ParraErazo_926222.pdf) · [Word](docs/Taller7_SmartLibrary_ParraErazo_926222.docx).
 
 ## Tecnologías
 
